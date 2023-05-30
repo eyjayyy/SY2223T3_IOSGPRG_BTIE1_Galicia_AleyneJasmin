@@ -15,10 +15,4 @@ public class Arrow : MonoBehaviour
         currentSprite = Random.Range(0, sprites.Length - 1);
         image.sprite = sprites[currentSprite];
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

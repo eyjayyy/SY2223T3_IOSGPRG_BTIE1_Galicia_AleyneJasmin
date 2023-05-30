@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public Enemy enemy;
     public bool inRange;
 
     void Start()
@@ -13,8 +14,11 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D (Collider2D other)
     {
-        inRange = true;
-        Debug.Log("Enemy in Range!");
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            other.gameObject.GetComponent<Enemy>().isAttacking = true;
+            inRange = true;
+            Debug.Log("Enemy in Range!");
+        }
     }
-
 }

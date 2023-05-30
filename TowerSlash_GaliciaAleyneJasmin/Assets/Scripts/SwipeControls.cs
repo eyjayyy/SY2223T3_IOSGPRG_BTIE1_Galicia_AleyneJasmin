@@ -12,19 +12,16 @@ public class SwipeControls : MonoBehaviour
         UP
     }
 
-    public string[] directions = {"Down", "Left", "Right", "Up"};
-    public int swipe;
-
     public SwipeDirection swipeDirection;
     public Player player;
-
+    public int directionIndex;
     private Vector2 initialTouchPosition;
     private Vector2 endTouchPosition;
     private float deadZone = 100;
 
     void Update()
     {
-        if (player.inRange == true)
+        if (player.inRange)
         {
             if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
             {
@@ -49,7 +46,6 @@ public class SwipeControls : MonoBehaviour
             if (endTouchPosition.y >= initialTouchPosition.y + deadZone) 
             {
                 swipeDirection = SwipeDirection.UP;
-                //swipe = directions[3];
             }
 
             else
@@ -71,6 +67,7 @@ public class SwipeControls : MonoBehaviour
             }
         }
 
-        Debug.Log(swipeDirection + swipe);
+        directionIndex = (int)swipeDirection;
+        Debug.Log(swipeDirection + " Index is " + directionIndex);
     }
 }
