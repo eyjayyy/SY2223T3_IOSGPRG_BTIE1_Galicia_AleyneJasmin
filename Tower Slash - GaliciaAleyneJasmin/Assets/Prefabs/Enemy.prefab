@@ -201,7 +201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyType: 0
-  arrow: {fileID: 8403038366049397082}
+  arrow: {fileID: 8403038366049397086}
   player: {fileID: 0}
   isAttacking: 0
   movementSpeed: 2
@@ -321,10 +321,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40f8e3d6a0070c743bd522be2d8a67ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   currentSprite: 0
   image: {fileID: 8403038366049397080}
   sprites:
   - {fileID: 21300000, guid: 96424a14fd8292f4886bdd590f8eb581, type: 3}
   - {fileID: 21300000, guid: cdd11c015806cc942a07c94aa5d7e856, type: 3}
-  - {fileID: 21300000, guid: 5e17995b7276e1f47ab2d760697e8a65, type: 3}
   - {fileID: 21300000, guid: fd61b1cff0ea9bc4ca11e404d707df9e, type: 3}
+  - {fileID: 21300000, guid: 5e17995b7276e1f47ab2d760697e8a65, type: 3}

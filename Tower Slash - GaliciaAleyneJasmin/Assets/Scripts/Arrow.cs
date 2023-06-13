@@ -9,10 +9,26 @@ public class Arrow : MonoBehaviour
     [SerializeField] private Image image;
     [SerializeField] private Sprite[] sprites;
 
-    // Start is called before the first frame update
-    void Start()
+    public void GetArrow()
     {
         currentSprite = Random.Range(0, sprites.Length - 1);
         image.sprite = sprites[currentSprite];
+    }
+
+    public IEnumerator CO_RotateArrow()
+    {
+        while(!GetComponentInParent<Enemy>().isAttacking)
+        {
+            yield return new WaitForSeconds(0.3f);
+            image.sprite = sprites[currentSprite];
+            currentSprite++;
+            
+            if (currentSprite > sprites.Length - 1)
+            {
+                currentSprite = 0;
+            }
+        }
+
+        GetArrow();
     }
 }
