@@ -59,7 +59,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 999
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!114 &8403038364581171974
 MonoBehaviour:
@@ -321,7 +321,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40f8e3d6a0070c743bd522be2d8a67ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   currentSprite: 0
   image: {fileID: 8403038366049397080}
   sprites:

@@ -9,7 +9,7 @@ public class SwipeControls : MonoBehaviour
         DOWN,
         LEFT,
         UP,
-        RIGHT
+        RIGHT,
     }
 
     public SwipeDirection swipeDirection;
@@ -43,11 +43,13 @@ public class SwipeControls : MonoBehaviour
         // Vertical movement is greater
         if (Mathf.Abs(endTouchPosition.y - initialTouchPosition.y) > Mathf.Abs(endTouchPosition.x - initialTouchPosition.x))
         {
+            // Up
             if (endTouchPosition.y >= initialTouchPosition.y) 
             {
                 swipeDirection = SwipeDirection.UP;
             }
 
+            // Down
             else
             {
                 swipeDirection = SwipeDirection.DOWN;
@@ -57,17 +59,19 @@ public class SwipeControls : MonoBehaviour
         // Horizontal movement is greater
         else 
         {
+            // Right
             if (endTouchPosition.x >= initialTouchPosition.x)
             {
-                swipeDirection = SwipeDirection.RIGHT;
+                 swipeDirection = SwipeDirection.RIGHT;
             }
 
+            // Left
             else
             {
                 swipeDirection = SwipeDirection.LEFT;
             }
         }
-
+        
         directionIndex = (int)swipeDirection;
         Debug.Log(swipeDirection + " Index is " + directionIndex);
     }

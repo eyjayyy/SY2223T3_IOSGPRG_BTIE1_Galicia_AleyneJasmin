@@ -16,10 +16,10 @@ public class Enemy : MonoBehaviour
     public Arrow arrow;
     public Player player;
     public bool isAttacking;
-    [SerializeField] private float movementSpeed; 
     [SerializeField] private float maxArrowSize = 0.005f;
     private int arrowDirection;
     private int swipeDirection;
+    private bool isCorrectSwipe;
 
     void Start()
     {
@@ -32,21 +32,56 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        // Moves enemies downwards to mimic screen "moving"
-        transform.position -= new Vector3(0, 1, 0) * Time.deltaTime * movementSpeed; 
-
         if (isAttacking == true) 
         {
             arrow.transform.localScale = new Vector3(maxArrowSize, maxArrowSize, maxArrowSize);
             arrowDirection = arrow.GetComponent<Arrow>().currentSprite;
             swipeDirection = player.GetComponentInChildren<SwipeControls>().directionIndex;
-            KillEnemy(enemyType);
+            EvaluateSwipeAndArrow(enemyType);
         }
     }
 
     void OnCollisionEnter2D (Collision2D other)
     {
+        if (player.isInvulnerable)
+        {
+            KillEnemy();
+        }
+
+        else
+        {
+            player.TakeDamage();
+            DestroyEnemy();
+            Debug.Log("Hit!");
+        }
+    }
+
+    void DestroyEnemy()
+    {
+        player.DisplayPlayerHP();
         Destroy(this.gameObject);
+        EnemySpawner.Instance.RemoveEnemyFromList(this.gameObject);
+    }
+
+    void CheckForPowerUp()
+    {
+        int powerupChance = Random.Range(1, 101);
+        Debug.Log("Chance: " + powerupChance);
+
+        if (powerupChance <= 3)
+        {
+            player.GainExtraLife();
+            player.DisplayPlayerHP();
+            Debug.Log("Extra life");
+        }
+    }
+
+    void KillEnemy()
+    {
+        DestroyEnemy();
+        CheckForPowerUp();
+        player.ModifyDashGauge();
+        Debug.Log("Killed");
     }
 
     void EvaluateEnemyType (EnemyTypes type)
@@ -69,14 +104,13 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    void KillEnemy (EnemyTypes type) 
+    void EvaluateSwipeAndArrow (EnemyTypes type) 
     {
         if (type == EnemyTypes.GREEN || type == EnemyTypes.ROTATING)
         {
             if (swipeDirection == arrowDirection)
             {
-                Destroy(this.gameObject);
-                Debug.Log("Killed");
+                KillEnemy();
             }
         }
 
@@ -90,8 +124,7 @@ public class Enemy : MonoBehaviour
                     // Swipe Up
                     if (swipeDirection == 2) 
                     {
-                        Destroy(this.gameObject);
-                        Debug.Log("Killed");
+                        KillEnemy();
                     }
                 break;
 
@@ -100,8 +133,7 @@ public class Enemy : MonoBehaviour
                     // Swipe Right
                     if (swipeDirection == 3) 
                     {
-                        Destroy(this.gameObject);
-                        Debug.Log("Killed");
+                        KillEnemy();
                     }
                 break;
 
@@ -110,8 +142,7 @@ public class Enemy : MonoBehaviour
                     // Swipe Down
                     if (swipeDirection == 0) 
                     {
-                        Destroy(this.gameObject);
-                        Debug.Log("Killed");
+                        KillEnemy();
                     }
                 break;
 
@@ -120,8 +151,7 @@ public class Enemy : MonoBehaviour
                     // Swipe Left
                     if (swipeDirection == 1) 
                     {
-                        Destroy(this.gameObject);
-                        Debug.Log("Killed");
+                        KillEnemy();
                     }
                 break;
            }

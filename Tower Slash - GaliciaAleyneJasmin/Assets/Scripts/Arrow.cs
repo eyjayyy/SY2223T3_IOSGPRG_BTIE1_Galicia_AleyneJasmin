@@ -11,8 +11,9 @@ public class Arrow : MonoBehaviour
 
     public void GetArrow()
     {
-        currentSprite = Random.Range(0, sprites.Length - 1);
+        currentSprite = Random.Range(0, sprites.Length);
         image.sprite = sprites[currentSprite];
+        Debug.Log("Arrow is " + currentSprite);
     }
 
     public IEnumerator CO_RotateArrow()
