@@ -124,6 +124,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a20e76c0c4a69349943c3520ca77dee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammo: {fileID: 0}
   _ammoType: 0
   _ammoToPickup: 0

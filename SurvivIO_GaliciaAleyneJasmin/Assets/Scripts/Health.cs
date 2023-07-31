@@ -41,5 +41,7 @@ public class Health : MonoBehaviour
     {
         _currentHealth += amount;
         _currentHealth = Mathf.Min(_currentHealth, _maxHealth);
+
+        Debug.Log($"{gameObject.name} healed {amount} HP");
     }
 }

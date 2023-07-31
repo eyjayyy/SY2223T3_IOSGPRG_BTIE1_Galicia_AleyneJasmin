@@ -24,7 +24,8 @@ public class Gun : MonoBehaviour
     [SerializeField] private int _clipCapacity;
 
     [SerializeField] private float _fireRate;
-    [SerializeField] private float _spreadAmount;
+    [SerializeField] private float _spreadDegree;
+    [SerializeField] private float _reloadSpeed;
 
     private int _currentClip;
 

@@ -12,7 +12,7 @@ public enum AmmoType
 public class AmmoPickup : MonoBehaviour
 {
     [SerializeField] private AmmoType _ammoType;
-    [SerializeField] private Ammo _ammo;
+    //[SerializeField] private Ammo _ammo;
     [SerializeField] private int _ammoToPickup;
 
     void Start()
@@ -24,7 +24,10 @@ public class AmmoPickup : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<Player>() != null)
         {
-            _ammo.AddAmmo(_ammoToPickup);
+            Inventory _playerInventory = collision.gameObject.GetComponent<Inventory>();
+
+            _playerInventory.AddAmmo(_ammoToPickup, _ammoType);
+            
             Destroy(this.gameObject);
         }
     }

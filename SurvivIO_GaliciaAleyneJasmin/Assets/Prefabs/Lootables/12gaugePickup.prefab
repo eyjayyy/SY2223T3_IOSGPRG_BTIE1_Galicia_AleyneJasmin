@@ -125,5 +125,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _ammoType: 2
-  _ammo: {fileID: 0}
   _ammoToPickup: 0

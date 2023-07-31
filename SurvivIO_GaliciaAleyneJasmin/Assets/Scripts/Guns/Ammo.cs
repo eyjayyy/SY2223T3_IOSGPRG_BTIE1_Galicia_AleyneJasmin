@@ -4,17 +4,18 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class Ammo : MonoBehaviour
+[System.Serializable]
+public class Ammo: MonoBehaviour
 {
     public string _name;
-    [SerializeField] AmmoType _ammoType;
-    [SerializeField] private int _capacity;
-    [SerializeField] private int _currentClip;
-    [SerializeField] private TMP_Text _ammoText;
+    public AmmoType _ammoType;
+    public int _capacity;
+    public int _currentClip;
+    public TMP_Text _ammoText;
     
     void Start()
     {
-        _ammoText = gameObject.GetComponent<TMP_Text>();
+        //_ammoText = gameObject.GetComponent<TMP_Text>();
     }
 
     public void AddAmmo(int amount)
